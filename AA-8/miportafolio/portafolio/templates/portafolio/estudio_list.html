@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estudios</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Listado de Estudios</h1>
+
+    <a href="{% url 'estudio_create' %}">Agregar nuevo estudio</a>
+    <ul>
+        {% for estudio in estudios %}
+            <li>
+                {{ estudio.titulo }} en {{ estudio.institucion }} ({{ estudio.fecha_inicio }} - {{ estudio.fecha_fin }})
+                <a href="{% url 'estudio_update' estudio.pk %}">Editar</a> |
+                <a href="{% url 'estudio_delete' estudio.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'hobbie_list' %}">Ver hobbies</a>
+</body>
+</html>

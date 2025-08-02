@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Proyectos</h2>
+<a href="{% url 'crear_proyecto' %}">Agregar nuevo</a>
+<ul>
+  {% for proyecto in proyectos %}
+    <li>
+      {{ proyecto.nombre }} - <a href="{{ proyecto.enlace }}" target="_blank">Ver</a>
+      [<a href="{% url 'editar_proyecto' proyecto.id %}">Editar</a>]
+      [<a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a>]
+    </li>
+  {% endfor %}
+</ul>

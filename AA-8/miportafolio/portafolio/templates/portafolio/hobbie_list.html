@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hobbies</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Listado de Hobbies</h1>
+
+    <a href="{% url 'hobbie_create' %}">Agregar nuevo hobbie</a>
+    <ul>
+        {% for hobbie in hobbies %}
+            <li>
+                {{ hobbie.nombre }} - {{ hobbie.descripcion }}
+                <a href="{% url 'hobbie_update' hobbie.pk %}">Editar</a> |
+                <a href="{% url 'hobbie_delete' hobbie.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'experiencia_list' %}">Ver Experiencia Laboral</a>
+</body>
+</html>

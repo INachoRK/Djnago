@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>¿Eliminar este proyecto?</h2>
+<p>{{ proyecto }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{% url 'lista_proyectos' %}">Cancelar</a>

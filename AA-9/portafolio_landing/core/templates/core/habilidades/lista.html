@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Lista de Habilidades</h2>
+<a href="{% url 'crear_habilidad' %}">Agregar nueva</a>
+<ul>
+  {% for habilidad in habilidades %}
+    <li>
+      {{ habilidad.nombre }} - {{ habilidad.tipo }} - {{ habilidad.nivel }}
+      [<a href="{% url 'editar_habilidad' habilidad.id %}">Editar</a>]
+      [<a href="{% url 'eliminar_habilidad' habilidad.id %}">Eliminar</a>]
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Portafolio Profesional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'inicio' %}">Portafolio</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista_habilidades' %}">Habilidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista_estudios' %}">Estudios</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista_experiencia' %}">Experiencia</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista_proyectos' %}">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'lista_hobbies' %}">Hobbies</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container text-center">
+    <img src="{% static 'img/foto.png' %}" alt="Foto Profesional" width="150" class="rounded-circle border border-light mb-3">
+    <h1>Ignacio Patiño Calle</h1>
+    <p class="lead">Desarrollador Full Stack | Ingeniero en Sistemas</p>
+    <p>📍 La Ceja, Antioquia, Colombia</p>
+    <p>ignaciopatinocalle@gmail.com | +57 305 432 3553</p>
+    <p>
+        <a href="https://github.com/INachoRK" target="_blank" class="btn btn-outline-light btn-sm">GitHub</a>
+    </p>
+</div>
+
+<footer class="text-center mt-5 text-secondary">
+    &copy; 2025 - Todos los derechos reservados
+</footer>
+
+</body>
+</html>

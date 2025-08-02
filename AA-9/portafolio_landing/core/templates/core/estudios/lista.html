@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Lista de Estudios</h2>
+<a href="{% url 'crear_estudio' %}">Agregar nuevo</a>
+<ul>
+  {% for estudio in estudios %}
+    <li>
+      {{ estudio.titulo }} en {{ estudio.institucion }}
+      [<a href="{% url 'editar_estudio' estudio.id %}">Editar</a>]
+      [<a href="{% url 'eliminar_estudio' estudio.id %}">Eliminar</a>]
+    </li>
+  {% endfor %}
+</ul>

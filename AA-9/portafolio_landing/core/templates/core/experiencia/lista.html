@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Experiencia Laboral</h2>
+<a href="{% url 'crear_experiencia' %}">Agregar nueva</a>
+<ul>
+  {% for experiencia in experiencias %}
+    <li>
+      {{ experiencia.cargo }} en {{ experiencia.empresa }}
+      [<a href="{% url 'editar_experiencia' experiencia.id %}">Editar</a>]
+      [<a href="{% url 'eliminar_experiencia' experiencia.id %}">Eliminar</a>]
+    </li>
+  {% endfor %}
+</ul>

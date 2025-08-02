@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>¿Eliminar esta experiencia?</h2>
+<p>{{ experiencia }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, eliminar</button>
+</form>
+<a href="{% url 'lista_experiencia' %}">Cancelar</a>

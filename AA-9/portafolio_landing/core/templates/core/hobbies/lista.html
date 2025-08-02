@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<h2>Mis Hobbies</h2>
+<a href="{% url 'crear_hobby' %}">Agregar nuevo</a>
+<ul>
+  {% for hobby in hobbies %}
+    <li>
+      {{ hobby.nombre }} - {{ hobby.descripcion }}
+      [<a href="{% url 'editar_hobby' hobby.id %}">Editar</a>]
+      [<a href="{% url 'eliminar_hobby' hobby.id %}">Eliminar</a>]
+    </li>
+  {% endfor %}
+</ul>
