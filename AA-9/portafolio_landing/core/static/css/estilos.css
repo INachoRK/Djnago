@@ -1,18 +1,25 @@
+/* === ESTILO GLOBAL === */
 body {
     background-color: #121212;
-    color: #f05454;
-    font-family: Arial, sans-serif;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', Arial, sans-serif;
     padding: 2rem;
+    margin: 0;
 }
 
-h1 {
+h1, h2 {
     color: #ff2e63;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ff2e63;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
 }
 
 a {
     color: #f05454;
     text-decoration: none;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 a:hover {
@@ -20,30 +27,86 @@ a:hover {
     text-decoration: underline;
 }
 
-button {
-    background-color: #ff2e63;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+ul {
+    padding: 0;
+    list-style: none;
+    margin-top: 2rem;
 }
 
-button:hover {
+/* === TARJETA DE LISTA === */
+li {
+    background-color: #1e1e1e;
+    border: 1px solid #ff2e63;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(255, 46, 99, 0.2);
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 15px rgba(255, 46, 99, 0.4);
+}
+
+li::before {
+    content: "📌 ";
+    margin-right: 5px;
+}
+
+/* === BOTONES === */
+button,
+input[type="submit"] {
+    background-color: #ff2e63;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
     background-color: #d63447;
 }
 
+/* === FORMULARIOS === */
 form {
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #1e1e1e;
+    border: 1px solid #ff2e63;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 46, 99, 0.3);
 }
 
 input, textarea, select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 6px;
-    margin-bottom: 10px;
-    background-color: #1e1e1e;
+    margin-bottom: 15px;
+    background-color: #1b1b1b;
     border: 1px solid #ff2e63;
     color: white;
-    border-radius: 4px;
+    border-radius: 5px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* === ENLACES SECUNDARIOS === */
+a.cancelar {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-left: 1rem;
+}
+
+a.cancelar:hover {
+    color: #fff;
+    text-decoration: underline;
 }

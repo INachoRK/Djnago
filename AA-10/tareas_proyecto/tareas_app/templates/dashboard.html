@@ -1,0 +1,67 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+<h2>Dashboard de Tareas</h2>
+<p>Bienvenido, {{ user.username }} | <a href="/logout">Cerrar sesión</a></p>
+
+<div class="card" style="max-width:900px;margin:16px auto;">
+  <h3 style="margin:0 0 12px 0;">Añadir nueva tarea</h3>
+  <form method="post" class="form" style="display:grid;gap:12px;">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input id="titulo" name="titulo" type="text" placeholder="Ej: Comprar insumos" required>
+    </div>
+
+    <div class="form-group">
+      <label for="categoria">Categoría</label>
+      <select id="categoria" name="categoria" required
+              style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #2a2a2e;background:#141416;color:#e9e9ea;">
+        <option value="" disabled selected>Selecciona una categoría</option>
+        {% for c in categorias %}
+          <option value="{{ c.id }}">{{ c.nombre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" name="descripcion" type="text" placeholder="Detalle (opcional)">
+    </div>
+
+    <label style="display:flex;align-items:center;gap:8px;">
+      <input type="checkbox" name="completada"> Marcar como completada
+    </label>
+
+    <button type="submit" class="btn">Guardar tarea</button>
+  </form>
+</div>
+
+
+<div class="card" style="max-width:900px;margin:16px auto;">
+  <div style="overflow:auto;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tarea in tareas %}
+          <tr>
+            <td>{{ tarea.titulo }}</td>
+            <td>{{ tarea.categoria.nombre }}</td>
+            <td>{{ tarea.descripcion }}</td>
+            <td>{% if tarea.completada %}✅ Completada{% else %}❌ Pendiente{% endif %}</td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="4">No hay tareas asignadas.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
