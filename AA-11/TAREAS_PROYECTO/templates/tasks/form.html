@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}{{ view.object|yesno:"Editar tarea,Nueva tarea" }}{% endblock %}
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a class="link-light" href="{% url 'dashboard' %}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a class="link-light" href="{% url 'tasks_list' %}">Tareas</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+      {{ view.object|yesno:"Editar,Nueva" }} tarea
+    </li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-md-9">
+    <div class="card shadow border-0 overflow-hidden">
+
+      <div class="p-4" style="background: linear-gradient(135deg,#6f42c1,#20c997); color:#fff;">
+        <h3 class="m-0 d-flex align-items-center gap-2">
+          <span class="badge bg-dark-subtle text-dark fw-normal">✅</span>
+          {{ view.object|yesno:"Editar tarea,Nueva tarea" }}
+        </h3>
+        <small class="opacity-75">Los campos con <span class="text-warning">*</span> son obligatorios.</small>
+      </div>
+
+      <div class="p-4">
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger mb-4">
+            {% for err in form.non_field_errors %}{{ err }}<br>{% endfor %}
+          </div>
+        {% endif %}
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-floating">
+                {{ form.title }}
+                <label for="{{ form.title.id_for_label }}">Título <span class="text-warning">*</span></label>
+              </div>
+              {% if form.title.errors %}
+                <div class="form-text text-danger">
+                  {% for err in form.title.errors %}{{ err }}{% if not forloop.last %}<br>{% endif %}{% endfor %}
+                </div>
+              {% else %}
+                <div class="form-text">Ej: “Entregar informe”, “Comprar materiales”.</div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                {{ form.category }}
+                <label for="{{ form.category.id_for_label }}">Categoría <span class="text-warning">*</span></label>
+              </div>
+              {% if form.category.errors %}
+                <div class="form-text text-danger">
+                  {% for err in form.category.errors %}{{ err }}{% if not forloop.last %}<br>{% endif %}{% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                {{ form.status }}
+                <label for="{{ form.status.id_for_label }}">Estado</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                {{ form.due_date }}
+                <label for="{{ form.due_date.id_for_label }}">Fecha de vencimiento</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-floating">
+                {{ form.description }}
+                <label for="{{ form.description.id_for_label }}">Descripción</label>
+              </div>
+              {% if form.description.errors %}
+                <div class="form-text text-danger">
+                  {% for err in form.description.errors %}{{ err }}{% if not forloop.last %}<br>{% endif %}{% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="d-grid d-md-flex gap-2 mt-4">
+            <button class="btn btn-primary px-4" type="submit">Guardar</button>
+            <a class="btn btn-outline-secondary px-4" href="{% url 'tasks_list' %}">↩Cancelar</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

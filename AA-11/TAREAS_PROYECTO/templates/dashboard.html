@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Dashboard</h2>
+<p>Total Categorías: {{ cats_count }} | Total Tareas: {{ tasks_count }}</p>
+
+<h3>Últimas tareas</h3>
+<ul>
+  {% for t in latest_tasks %}
+    <li><strong>{{ t.title }}</strong> ({{ t.get_status_display }}) — {{ t.category.name }}</li>
+  {% empty %}
+    <li>Sin tareas todavía.</li>
+  {% endfor %}
+</ul>
+
+<h3>Últimas categorías</h3>
+<ul>
+  {% for c in latest_cats %}
+    <li>{{ c.name }}</li>
+  {% empty %}
+    <li>Sin categorías todavía.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
